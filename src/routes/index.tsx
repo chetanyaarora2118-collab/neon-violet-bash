@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import { Dumbbell, Flame, Trophy, Zap, ArrowRight } from "lucide-react";
+import { Flame, Trophy, Zap, ArrowRight } from "lucide-react";
 import { getTotalStats, getAllWorkouts } from "@/lib/workout-storage";
+import dumbbellIcon from "../assets/dumbbell-icon.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
