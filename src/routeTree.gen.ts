@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkoutRouteImport } from './routes/workout'
 import { Route as StatsRouteImport } from './routes/stats'
+import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as HistoryRouteImport } from './routes/history'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -22,6 +23,11 @@ const WorkoutRoute = WorkoutRouteImport.update({
 const StatsRoute = StatsRouteImport.update({
   id: '/stats',
   path: '/stats',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScheduleRoute = ScheduleRouteImport.update({
+  id: '/schedule',
+  path: '/schedule',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HistoryRoute = HistoryRouteImport.update({
@@ -38,12 +44,14 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/history': typeof HistoryRoute
+  '/schedule': typeof ScheduleRoute
   '/stats': typeof StatsRoute
   '/workout': typeof WorkoutRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/history': typeof HistoryRoute
+  '/schedule': typeof ScheduleRoute
   '/stats': typeof StatsRoute
   '/workout': typeof WorkoutRoute
 }
@@ -51,20 +59,22 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/history': typeof HistoryRoute
+  '/schedule': typeof ScheduleRoute
   '/stats': typeof StatsRoute
   '/workout': typeof WorkoutRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/history' | '/stats' | '/workout'
+  fullPaths: '/' | '/history' | '/schedule' | '/stats' | '/workout'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/history' | '/stats' | '/workout'
-  id: '__root__' | '/' | '/history' | '/stats' | '/workout'
+  to: '/' | '/history' | '/schedule' | '/stats' | '/workout'
+  id: '__root__' | '/' | '/history' | '/schedule' | '/stats' | '/workout'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HistoryRoute: typeof HistoryRoute
+  ScheduleRoute: typeof ScheduleRoute
   StatsRoute: typeof StatsRoute
   WorkoutRoute: typeof WorkoutRoute
 }
@@ -83,6 +93,13 @@ declare module '@tanstack/react-router' {
       path: '/stats'
       fullPath: '/stats'
       preLoaderRoute: typeof StatsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/schedule': {
+      id: '/schedule'
+      path: '/schedule'
+      fullPath: '/schedule'
+      preLoaderRoute: typeof ScheduleRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/history': {
@@ -105,6 +122,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HistoryRoute: HistoryRoute,
+  ScheduleRoute: ScheduleRoute,
   StatsRoute: StatsRoute,
   WorkoutRoute: WorkoutRoute,
 }

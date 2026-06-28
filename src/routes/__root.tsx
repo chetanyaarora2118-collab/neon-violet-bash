@@ -12,7 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { Dumbbell, History, BarChart3, Home } from "lucide-react";
+import { Dumbbell, History, BarChart3, Home, Calendar } from "lucide-react";
 
 function NotFoundComponent() {
   return (
@@ -121,6 +121,7 @@ function NavBar() {
   const navItems = [
     { to: "/", label: "Home", icon: Home },
     { to: "/workout", label: "Workout", icon: Dumbbell },
+    { to: "/schedule", label: "Schedule", icon: Calendar },
     { to: "/history", label: "History", icon: History },
     { to: "/stats", label: "Stats", icon: BarChart3 },
   ];
