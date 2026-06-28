@@ -43,6 +43,11 @@ function Index() {
     <div className="px-4 pt-8 pb-4">
       {/* Hero */}
       <div className="mb-8 text-center">
+        <img
+          src={dumbbellIcon}
+          alt="Dumbbell"
+          className="mx-auto mb-4 h-24 w-24 object-contain drop-shadow-[0_0_12px_rgba(57,255,20,0.5)]"
+        />
         <h1 className="font-display text-5xl tracking-tight text-neon neon-text-glow">
           FIT FIESTA
         </h1>
