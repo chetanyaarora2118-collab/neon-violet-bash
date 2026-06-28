@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import { Dumbbell, Flame, Trophy, Zap, ArrowRight } from "lucide-react";
+import { Dumbbell, Flame, Trophy, Zap, ArrowRight, Calendar } from "lucide-react";
 import { getTotalStats, getAllWorkouts } from "@/lib/workout-storage";
 import dumbbellIcon from "../assets/dumbbell-icon.png";
 
@@ -90,6 +90,23 @@ function Index() {
           </div>
         </div>
         <ArrowRight className="h-5 w-5 text-neon" />
+      </Link>
+
+      {/* Schedule CTA */}
+      <Link
+        to="/schedule"
+        className="mb-8 flex items-center justify-between rounded-2xl bg-surface p-4 border border-violet-bright/30 transition-transform hover:scale-[1.02]"
+      >
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-bright/20">
+            <Calendar className="h-5 w-5 text-violet-bright" />
+          </div>
+          <div>
+            <p className="font-bold text-foreground">Weekly Split</p>
+            <p className="text-xs text-muted-foreground">Chest · Arms · Abs · Back · Shoulders · Legs</p>
+          </div>
+        </div>
+        <ArrowRight className="h-5 w-5 text-violet-bright" />
       </Link>
 
       {/* Recent Workouts */}
